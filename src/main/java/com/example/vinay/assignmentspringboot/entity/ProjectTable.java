@@ -1,7 +1,5 @@
 package com.example.vinay.assignmentspringboot.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -24,12 +22,12 @@ public class ProjectTable
     @Column
     private LocalDate projectCompletionDate;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    @JsonBackReference
-    @JsonIgnoreProperties("projects")
     private Brand brand;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;

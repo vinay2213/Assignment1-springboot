@@ -8,10 +8,5 @@ import java.util.List;
 
 public interface ProjectTableRepository extends JpaRepository<ProjectTable, Integer>
 {
-//    List<ProjectTable> findByBrand_BrandName(String brand_name);
-
-
-//    List<ProjectTable> findByBrand_BrandName(String brandName);
-
     List<ProjectTable> findByBrand_BrandId(int brandId);
 }

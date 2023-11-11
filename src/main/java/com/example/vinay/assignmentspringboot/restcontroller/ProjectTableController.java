@@ -24,20 +24,9 @@ public class ProjectTableController
     private ProjectTableRepository projectTableRepository;
 
     @GetMapping("/details")
-    public ProjectTable getBrandDetails(@RequestParam ("brandName") String brandName){
-//        System.out.println("entered");
-//        System.out.println(brandRepository.findByBrandName(brandName).getBrandId() + " done");
+    public List<ProjectTable> getBrandDetails(@RequestParam ("brand_name") String brandName){
 
         int brandId = brandRepository.findByBrandName(brandName).getBrandId();
-        System.out.println(projectTableRepository.findByBrand_BrandId(brandId).get(0));
-        return projectTableRepository.findByBrand_BrandId(brandId).get(0);
-//        return details;
+        return projectTableRepository.findByBrand_BrandId(brandId);
     }
-
-//    @GetMapping("/byBrand")
-//    public List<ProjectTable> getProjectsByBrand(@RequestParam("brand_name") String brandName) {
-//        Brand brand = brand.getBrandId();
-//        List<ProjectTable> projects = projectTableService.getProjectsByBrandName(brandId);
-//        return projects;
-//    }
 }

@@ -17,15 +17,9 @@ public class Brand
     @Column(length = 50)
     private String brandName;
 
-    public Brand() {
-    }
-
+    @JsonBackReference
     @OneToMany(mappedBy = "brand")
-    @JsonManagedReference
-    @JsonIgnoreProperties("projects")
     private List<ProjectTable> project;
-
-//
 
     public int getBrandId() {
         return brandId;

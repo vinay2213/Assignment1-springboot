@@ -1,5 +1,7 @@
 package com.example.vinay.assignmentspringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +16,7 @@ public class Country
     @Column(length = 100)
     private String countryName;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "country")
     private List<ProjectTable> project;
 
