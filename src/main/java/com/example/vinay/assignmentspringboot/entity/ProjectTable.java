@@ -2,13 +2,11 @@ package com.example.vinay.assignmentspringboot.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class ProjectTable
-{
+public class ProjectTable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int projectId;
@@ -79,4 +77,5 @@ public class ProjectTable
     public void setCountry(Country country) {
         this.country = country;
     }
+
 }

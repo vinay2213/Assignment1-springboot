@@ -1,6 +1,5 @@
 package com.example.vinay.assignmentspringboot.exception;
 
-
 public class ApiResponse {
     private String message;
     private boolean success;

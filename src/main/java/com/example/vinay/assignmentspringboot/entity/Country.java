@@ -1,14 +1,12 @@
 package com.example.vinay.assignmentspringboot.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Country
-{
+public class Country {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int countryId;
@@ -43,4 +41,5 @@ public class Country
     public void setProject(List<ProjectTable> project) {
         this.project = project;
     }
+
 }

@@ -1,15 +1,11 @@
 package com.example.vinay.assignmentspringboot.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
-public class Brand
-{
+public class Brand {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int brandId;
