@@ -3,6 +3,7 @@ package com.example.vinay.assignmentspringboot.restcontroller;
 import com.example.vinay.assignmentspringboot.entity.Country;
 import com.example.vinay.assignmentspringboot.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,8 @@ public class CountryController {
     private CountryService countryService;
 
     @GetMapping
-    public List<Country> getAllCountries() {
+    public ResponseEntity<List<Country>> getAllCountries() {
         List<Country> countries = countryService.getAllCountries();
-        return countries;
+        return ResponseEntity.ok(countries);
     }
 }

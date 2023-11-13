@@ -4,6 +4,7 @@ package com.example.vinay.assignmentspringboot.restcontroller;
 import com.example.vinay.assignmentspringboot.entity.Brand;
 import com.example.vinay.assignmentspringboot.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,8 @@ public class BrandController {
     private BrandService brandService;
 
     @GetMapping
-    public List<Brand> getAllBrands() {
+    public ResponseEntity<List<Brand>> getAllBrands() {
         List<Brand> brands = brandService.getAllBrands();
-        return brands;
+        return ResponseEntity.ok(brands);
     }
 }
