@@ -2,7 +2,6 @@ package com.example.vinay.assignmentspringboot.repository;
 
 import com.example.vinay.assignmentspringboot.entity.ProjectTable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
 public interface ProjectTableRepository extends JpaRepository<ProjectTable, Integer> {
