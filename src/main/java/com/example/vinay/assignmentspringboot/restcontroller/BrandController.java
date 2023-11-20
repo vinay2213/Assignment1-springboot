@@ -3,6 +3,7 @@ package com.example.vinay.assignmentspringboot.restcontroller;
 
 import com.example.vinay.assignmentspringboot.entity.Brand;
 import com.example.vinay.assignmentspringboot.service.BrandService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/brands")
+@RolesAllowed("ADMIN")
 public class BrandController {
 
     @Autowired
     private BrandService brandService;
 
     @GetMapping
+    @RolesAllowed("ADMIN")
     public ResponseEntity<List<Brand>> getAllBrands() {
         List<Brand> brands = brandService.getAllBrands();
         return ResponseEntity.ok(brands);
