@@ -20,7 +20,6 @@ public class BrandController {
     private BrandService brandService;
 
     @GetMapping
-    @RolesAllowed("ADMIN")
     public ResponseEntity<List<Brand>> getAllBrands() {
         List<Brand> brands = brandService.getAllBrands();
         return ResponseEntity.ok(brands);

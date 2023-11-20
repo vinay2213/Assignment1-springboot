@@ -17,7 +17,6 @@ public class ProjectTableController
     private ProjectTableService projectTableService;
 
     @GetMapping("/projectdetails")
-    @RolesAllowed("ADMIN")
     public ResponseEntity<List<ProjectTable>> getBrandDetails(@RequestParam ("brand_name") String brandName){
         List<ProjectTable> projectDetails = projectTableService.getProjectDetails(brandName);
         return ResponseEntity.ok(projectDetails);
