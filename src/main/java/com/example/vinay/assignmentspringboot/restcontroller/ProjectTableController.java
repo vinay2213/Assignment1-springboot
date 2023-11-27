@@ -1,6 +1,7 @@
 package com.example.vinay.assignmentspringboot.restcontroller;
 
 import com.example.vinay.assignmentspringboot.entity.ProjectTable;
+import com.example.vinay.assignmentspringboot.exception.ResourceNotFoundException;
 import com.example.vinay.assignmentspringboot.service.ProjectTableService;
 import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class ProjectTableController
     private ProjectTableService projectTableService;
 
     @GetMapping("/projectdetails")
-    public ResponseEntity<List<ProjectTable>> getBrandDetails(@RequestParam ("brand_name") String brandName){
-        List<ProjectTable> projectDetails = projectTableService.getProjectDetails(brandName);
+    public ResponseEntity<List<ProjectTable>> getBrandDetails(@RequestParam ("brand_name") String brandName) throws Exception {
+        List<ProjectTable> projectDetails = projectTableService.getProjectsByBrandName(brandName);
         return ResponseEntity.ok(projectDetails);
     }
 }
