@@ -53,14 +53,7 @@ public class ProjectTableService {
             throw new ResourceNotFoundException("This brand is not present in the database");
         }
 
-        List<ProjectTable> projectDetails = null;
-
-        try {
-            projectDetails= projectTableRepository.findByBrand_BrandName(brandName);
-        }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
+        List<ProjectTable> projectDetails= projectTableRepository.findByBrand_BrandName(brandName);
 
         if(projectDetails.isEmpty()) {
             throw new ResourceNotFoundException("No project details are present for (Brand = " + brandName + ")");
