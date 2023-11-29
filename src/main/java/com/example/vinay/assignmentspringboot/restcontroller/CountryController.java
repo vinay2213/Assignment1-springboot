@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/countries")
-@RolesAllowed("ADMIN")
+@RolesAllowed({"ADMIN", "QA"})
 public class CountryController {
 
     @Autowired

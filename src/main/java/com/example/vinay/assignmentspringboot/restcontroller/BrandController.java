@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/brands")
-@RolesAllowed("ADMIN")
+@RolesAllowed({"ADMIN", "DEVELOPER"})
 public class BrandController {
 
     @Autowired
