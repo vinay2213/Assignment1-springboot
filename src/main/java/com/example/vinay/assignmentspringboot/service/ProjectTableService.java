@@ -1,7 +1,5 @@
 package com.example.vinay.assignmentspringboot.service;
 
-import com.example.vinay.assignmentspringboot.entity.Brand;
-import com.example.vinay.assignmentspringboot.entity.Country;
 import com.example.vinay.assignmentspringboot.entity.ProjectTable;
 import com.example.vinay.assignmentspringboot.exception.ResourceNotFoundException;
 import com.example.vinay.assignmentspringboot.repository.ProjectTableRepository;
@@ -12,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,32 +56,21 @@ public class ProjectTableService {
         List<Predicate> predicates = new ArrayList<>();
 
         Root<ProjectTable> root = criteriaQuery.from(ProjectTable.class);
-        Join<ProjectTable, Brand> brandJoin = root.join("brand", JoinType.INNER);
-        Join<ProjectTable, Country> countryJoin = root.join("country", JoinType.INNER);
 
         Predicate brandNamePredicate = null;
         if (brandName != null) {
-            brandNamePredicate = criteriaBuilder.like(brandJoin.get("brandName"), "%" + brandName + "%");
+            brandNamePredicate = criteriaBuilder.equal(root.get("brand").get("brandName"), brandName);
             predicates.add(brandNamePredicate);
         }
 
         Predicate countryNamePredicate = null;
         if(countryName != null) {
-            countryNamePredicate = criteriaBuilder
-                    .like(countryJoin.get("countryName"), "%" + countryName + "%");
+            countryNamePredicate = criteriaBuilder.equal(root.get("country").get("countryName"), countryName);
             predicates.add(countryNamePredicate);
         }
 
-        if(brandName != null && countryName != null){
-            Predicate brandNameAndCountryNamePredicate = criteriaBuilder.and(
-                    brandNamePredicate,
-                    countryNamePredicate
-            );
-            predicates.add(brandNameAndCountryNamePredicate);
-        }
-
         criteriaQuery.where(
-                predicates.toArray(new Predicate[0])
+        predicates.toArray(new Predicate[predicates.size()])
         );
 
         TypedQuery<ProjectTable> query = entityManager.createQuery(criteriaQuery);
